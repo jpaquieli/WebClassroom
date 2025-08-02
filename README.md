@@ -77,7 +77,7 @@ Cria uma nova postagem.
 }
 ```
 
-#### `PUT /v1/post/:id` *(somente professores)*  
+#### `PATCH /v1/post/:id` *(somente professores)*  
 Edita uma postagem existente.  
 **Body:**
 ```json
