@@ -47,14 +47,3 @@ jobs:
 
       - name: Push Docker image
         run: docker push $DOCKER_USERNAME/webclassroom:latest
-
-  CD:
-    needs: CI
-    runs-on: ubuntu-latest
-
-    env:
-      RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
-
-    steps:
-      - name: Trigger Render Deploy Hook
-        run: curl -X POST $RENDER_DEPLOY_HOOK_URL
