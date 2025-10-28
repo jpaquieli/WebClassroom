@@ -1,10 +1,10 @@
 import { User } from '@/entities/interface/userEntity';
-import { ICreateUserRepository } from '@/repositories/interface/createUserRepository';
+import { ICreateAlunoRepository } from '@/repositories/interface/createAlunoRepositoryInterface';
 import { IFindUserByUsernameRepository } from '@/repositories/interface/findUserByUsername';
 import { UserAlreadyExistsError } from './errors/userAlreadyExistsError';
 
-export class CreateUserUseCase {
-  constructor(private createUserRepository: ICreateUserRepository,
+export class CreateAlunoUseCase {
+  constructor(private createAlunoRepository: ICreateAlunoRepository,
     private findUserByUsernameRepository: IFindUserByUsernameRepository
   ) {}
 
@@ -15,6 +15,6 @@ export class CreateUserUseCase {
       throw new UserAlreadyExistsError();
     }
 
-    return this.createUserRepository.create(user);
+    return this.createAlunoRepository.create(user);
   }
 }

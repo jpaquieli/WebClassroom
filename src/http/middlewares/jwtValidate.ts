@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 export function validateJwt(req: Request, res: Response, next: NextFunction): void {
   try {
-    const routeFreeList = ['POST-/v1/user', 'POST-/v1/user/signin'];
+    const routeFreeList = ['POST-/v1/user/professor', 'POST-/v1/user/aluno', 'POST-/v1/user/signin'];
     const validateRoute = `${req.method}-${req.path}`;
 
     if (routeFreeList.includes(validateRoute)) {
