@@ -9,7 +9,7 @@ import { validateRole } from '@/http/middlewares/roleValidate';
 
 const userRouter = Router();
 
-userRouter.post('/user/professor', createProfessor);
+userRouter.post('/user/professor', validateRole, createProfessor);
 userRouter.post('/user/aluno', validateRole, createAluno);
 userRouter.post('/user/signin', signin);
 userRouter.get('/user/professor', validateRole, findAllProfessor);
