@@ -1,9 +1,9 @@
-import { makeEditAlunoUseCase } from '@/useCases/factory/makeEditAlunoUseCase';
+import { makeEditUserUseCase } from '@/useCases/factory/makeEditUserUseCase';
 import { Request, Response, NextFunction } from 'express';
 import { hash } from 'bcryptjs';
 import { z } from 'zod';
 
-export async function editAluno(req: Request, res: Response, next: NextFunction): Promise<void> {
+export async function editUser(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const paramsSchema = z.object({
       id: z.coerce.number(),
@@ -27,8 +27,8 @@ export async function editAluno(req: Request, res: Response, next: NextFunction)
       data.password = await hash(password, 8);
     }
 
-    const editAlunoUseCase = makeEditAlunoUseCase();
-    const updatedUser = await editAlunoUseCase.handler(id, data);
+    const editUserUseCase = makeEditUserUseCase();
+    const updatedUser = await editUserUseCase.handler(id, data);
 
     if (!updatedUser) {
       res.status(404).json({ message: 'Usuário não encontrado.' });
@@ -36,7 +36,7 @@ export async function editAluno(req: Request, res: Response, next: NextFunction)
     }
 
     res.status(200).json({
-      message: `Usuário aluno com id ${id} editado com sucesso.`
+      message: `Usuário com id ${id} editado com sucesso.`
     });
   } catch (error) {
     console.error(error);

@@ -6,14 +6,14 @@ import { findAllProfessor } from './findAllProfessor';
 import { findAllAluno } from './findAllAluno';
 import { deleteUser } from './deleteUser';
 import { validateRole } from '@/http/middlewares/roleValidate';
-import { editAluno } from './editAluno';
+import { editUser } from './editUser';
 
 const userRouter = Router();
 
 userRouter.post('/user/professor', validateRole, createProfessor);
 userRouter.post('/user/aluno', validateRole, createAluno);
 userRouter.post('/user/signin', signin);
-userRouter.patch('/user/:id', validateRole, editAluno);
+userRouter.patch('/user/:id', validateRole, editUser);
 userRouter.get('/user/professor', validateRole, findAllProfessor);
 userRouter.get('/user/aluno', validateRole, findAllAluno);
 userRouter.delete('/user/:id', validateRole, deleteUser);

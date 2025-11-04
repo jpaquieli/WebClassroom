@@ -1,8 +1,8 @@
 import { database } from '@/lib/pg/db';
 import { IUser } from '@/entities/models/userInterface';
-import { IEditRepository } from '../interface/editAlunoRepositoryInterface';
+import { IEditUserRepository } from '../interface/editUserRepositoryInterface';
 
-export class EditAlunoRepository implements IEditRepository {
+export class EditUserRepository implements IEditUserRepository {
   public async edit(id: number, data: { username?: string; password?: string }): Promise<boolean> {
     const { username, password } = data;
     const result = await database.clientInstance?.query<IUser>(
